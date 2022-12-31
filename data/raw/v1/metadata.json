@@ -1,0 +1,9 @@
+{
+    "title": "V1 data",
+    "description": "V1 data for all 6 stages",
+    "places": null,
+    "stages": 6,
+    "traffic": false,
+    "format": "raw",
+    "created": "2022-12-07T08:05:16.625Z"
+}

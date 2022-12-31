@@ -1,0 +1,9 @@
+{
+    "title": "V2 data",
+    "description": "V2 data for 2 stages (all off including flight mode, all_off) in kitchen",
+    "places": ["kitchen"],
+    "stages": 2,
+    "traffic": false,
+    "format": "interim",
+    "created": "2022-12-21T10:56:31.625Z"
+}
