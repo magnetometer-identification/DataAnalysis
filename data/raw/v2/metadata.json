@@ -1,6 +1,7 @@
 {
     "title": "V2 data",
     "description": "V2 data for 2 stages (all off including flight mode, all_off) in kitchen",
+    "author": "Mihael",
     "places": ["kitchen"],
     "stages": 2,
     "traffic": false,

@@ -1,0 +1,10 @@
+{
+    "title": "V4 data",
+    "description": "V4 data for 2 stages (all_on, 6, all_off, 5) in kitchen and room and park",
+    "author": "Milenko",
+    "places": ["room", "kitchen", "park"],
+    "stages": 2,
+    "traffic": true,
+    "format": "raw",
+    "created": "2022-12-31T7:51:31.625Z"
+}

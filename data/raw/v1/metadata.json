@@ -1,6 +1,7 @@
 {
     "title": "V1 data",
     "description": "V1 data for all 6 stages",
+    "author": "Mihael",
     "places": null,
     "stages": 6,
     "traffic": false,

@@ -1,0 +1,10 @@
+{
+    "title": "V3 data",
+    "description": "V3 data for 2 stages (all_on, 6, all_off, 5) in kitchen and room",
+    "author": "Milenko",
+    "places": ["room","kitchen"],
+    "stages": 2,
+    "traffic": false,
+    "format": "raw",
+    "created": "2022-12-31T7:51:31.625Z"
+}
