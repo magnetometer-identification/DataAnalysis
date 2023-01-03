@@ -1,0 +1,15 @@
+{
+    "title": "Statistical dataset",
+    "version": "v4",
+    "description": "Dataset from v4 data, single device, with traffic, statistical features",
+    "author": "Mihael",
+    "places": [
+        "room",
+        "kitchen",
+        "park"
+    ],
+    "stages": 2,
+    "traffic": true,
+    "format": "processed",
+    "created": 1672755984
+}
