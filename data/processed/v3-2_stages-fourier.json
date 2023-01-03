@@ -1,0 +1,14 @@
+{
+    "title": "Fourier dataset, 50 frequencies",
+    "version": "v3",
+    "description": "Dataset from v3 data, single device, without traffic, statistical features",
+    "author": "Mihael",
+    "places": [
+        "room",
+        "kitchen"
+    ],
+    "stages": 2,
+    "traffic": false,
+    "format": "processed",
+    "created": 1672763618
+}
