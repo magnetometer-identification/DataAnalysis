@@ -1,0 +1,14 @@
+{
+    "title": "v3 full statistical dataset",
+    "description": "Dataset with full statistical features and windowed test cases from V3 data for 2 stages (all_on, 6, all_off, 5) in kitchen and room",
+    "author": "Mihael",
+    "places": [
+        "room",
+        "kitchen"
+    ],
+    "stages": 2,
+    "traffic": false,
+    "format": "processed",
+    "created": 1672867225,
+    "version": "v3"
+}

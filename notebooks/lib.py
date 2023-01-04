@@ -74,7 +74,7 @@ def statistical_features_flat(df: pd.DataFrame, test_case_name: str, test_case_c
 
     # add features that do not change
     for feature in ['X_Bias', 'Y_Bias', 'Z_Bias', 'Bias_Intensity', 'Accuracy']:
-        d[feature] = df[feature][0]
+        d[feature] = df[feature].iloc[0]
 
     
     return d
@@ -88,6 +88,10 @@ def statistical_dataset(data: Dict[str, pd.DataFrame], label: str) -> pd.DataFra
 def spectral_image(df: pd.DataFrame, column = 'Intensity', duration = 60):
     N = len(df)
     sampling_rate = N // duration
+    if sampling_rate == 0:
+        print(N)
+        print(duration)
+        print(df)
     T = 1 / sampling_rate
 
     yf = fft(df[column].to_numpy())
