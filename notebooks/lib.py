@@ -35,6 +35,11 @@ def add_intensity(df: pd.DataFrame):
     """
     df["Intensity"] = (df["X_UnCal"] ** 2 + df["Y_UnCal"] ** 2 + df["Z_UnCal"] ** 2) ** 0.5
 
+def add_intensity_bias(df: pd.DataFrame):
+    """
+    add Intensity bias as 2nd norm of 3D vector
+    """
+    df["Bias_Intensity"] = (df["X_Bias"] ** 2 + df["Y_Bias"] ** 2 + df["Z_Bias"] ** 2) ** 0.5
 
 def add_intensity_to_dataset(data: Dict[str, pd.DataFrame]) -> None:
     """
@@ -42,7 +47,41 @@ def add_intensity_to_dataset(data: Dict[str, pd.DataFrame]) -> None:
     """
     for key in data.keys():
             add_intensity(data[key])
+            add_intensity_bias(data[key])
 
+# usual statistical features
+def statistical_features_flat(df: pd.DataFrame, test_case_name: str, test_case_class: int) -> dict:
+    
+
+    d = dict() 
+
+    # add test_case_name and label
+    d['Name'] = test_case_name
+    d['Label'] = test_case_class
+
+    statistics = df[['X_UnCal', 'Y_UnCal', 'Z_UnCal', 'Intensity']].describe()
+    for col_name in statistics.columns:
+        for row_name, value in statistics.iterrows():
+
+            # add one feature "count"
+            if col_name == "X_UnCal" and row_name == "count":
+                d["count"] = value[col_name]
+
+            # exclude other counts, since they are the same
+            if row_name != "count":
+                d[f"{col_name}_{row_name}"] = value[col_name]
+            
+
+    # add features that do not change
+    for feature in ['X_Bias', 'Y_Bias', 'Z_Bias', 'Bias_Intensity', 'Accuracy']:
+        d[feature] = df[feature][0]
+
+    
+    return d
+
+
+def statistical_dataset(data: Dict[str, pd.DataFrame], label: str) -> pd.DataFrame:
+    return pd.DataFrame([statistical_features_flat(df=df, test_case_name=name, test_case_class=label)for name, df in data.items()])
 
 
 
@@ -84,8 +123,6 @@ def spectral_dataset(data: Dict[str, pd.DataFrame], label: int, vec_len: int = 5
 # joining, ordering datasets
 def join_and_order_dataset(dfs: List[pd.DataFrame], sort_by = ['Label', 'Name']):
     dataset = pd.concat(dfs, ignore_index=True)
-    # for df in dfs[1:]:
-    #     dataset.append(df, ignore_index=True)
     return dataset.sort_values(by=sort_by, ignore_index=True)
 
 
@@ -97,22 +134,6 @@ def save_dataset(dataset: pd.DataFrame, dir_path: str, dataset_name: str, metada
     if not os.path.isdir(dir_path):
         os.makedirs(dir_path)
 
-    # import time
-    # # metadata
-    # metadata = {
-    #     "title": "Fourier dataset, 50 frequencies",
-    #     "version": "v3",
-    #     "description": "Dataset from v3 data, single device, without traffic, statistical features",
-    #     "author": "Mihael",
-    #     "places": [
-    #         "room",
-    #         "kitchen"
-    #     ],
-    #     "stages": 2,
-    #     "traffic": False,
-    #     "format": "processed",
-    #     "created": int(time.time())
-    # }
     file_name = f"{metadata['version']}-{metadata['stages']}_stages-{dataset_name}"
     dataset.to_csv(f"{dir_path}/{file_name}.csv",index=True)
     # Writing metadata

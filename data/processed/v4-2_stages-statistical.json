@@ -1,7 +1,6 @@
 {
-    "title": "Statistical dataset",
-    "version": "v4",
-    "description": "Dataset from v4 data, single device, with traffic, statistical features",
+    "title": "v4 statistical dataset",
+    "description": "Dataset with statistical features from V4 data for 2 stages (all_on, 6, all_off, 5) in kitchen and room and park",
     "author": "Mihael",
     "places": [
         "room",
@@ -11,5 +10,6 @@
     "stages": 2,
     "traffic": true,
     "format": "processed",
-    "created": 1672755984
+    "created": 1672855052,
+    "version": "v4"
 }
