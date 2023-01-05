@@ -1,0 +1,15 @@
+{
+    "title": "v4 fourier dataset big",
+    "description": "Fourier dataset with windowed test cases from V4 data for 2 stages (all_on, 6, all_off, 5) in kitchen and room and park",
+    "author": "Mihael",
+    "places": [
+        "room",
+        "kitchen",
+        "park"
+    ],
+    "stages": 2,
+    "traffic": true,
+    "format": "processed",
+    "created": 1672874832,
+    "version": "v4"
+}
