@@ -7,6 +7,39 @@ from scipy.fft import fft, fftfreq
 import numpy as np
 from matplotlib import pyplot as plt
 
+# loading raw data
+
+def remove_from_string(test_string):
+    """
+    Reads test names and locations from filenames
+    """
+    # remove comments
+    remove_list = ["resorant", "Trafic", "Traffic", "With", "Truffic", "Eith", "DifferentOrentationPousesInRuns", "Orient"]
+    for sub in remove_list:
+        test_string = test_string.replace(sub, '')
+    # remove numbers
+    test_string = "".join(list(filter(lambda x: x.isalpha(), test_string)))
+    return test_string
+
+place_mapping = {
+    "NadasKitchen": "Kitchen1",
+    "MihasLivingRoom": "LivingRoom1",
+    "milenkosRoomBed": "DormRoom1",
+    "PiXmilenkosRoomTable": "DormRoom2",
+    "spelaMilenkosRoomTable": "DormRoom3",
+    "milenkoPark": "Park",
+    "LATERNA": "Restaurant",
+    "NadasLivingRoom": "LivingRoom2",
+    "milenkosRoomNearDevices": "DormRoom4",
+    "milenkosRoom": "DormRoom5",
+    "milenkosRoomTable": "DormRoom6",
+    "NadasBathroom": "Bathroom",
+    "spelaMilenkosKitchenTable": "Kitchen2",
+    "milenkosKitchenNotNearDevices": "Kitchen3"
+}
+
+
+
 # Loading csv dataset
 
 def read_dataset(data_path, classes = 2):

@@ -1,0 +1,48 @@
+{
+    "title": "V5 data",
+    "description": "V5 data for 2 stages (all_on, 6, all_off, 5) in multiple places (Bathroom, Kitchen, LivingRoom, DormRoom, Park, Restaurant)",
+    "author": "Milenko, Mihael",
+    "places": [
+        "Bathroom",
+        "DormRoom1",
+        "DormRoom2",
+        "DormRoom3",
+        "DormRoom4",
+        "DormRoom5",
+        "DormRoom6",
+        "Kitchen1",
+        "Kitchen2",
+        "Kitchen3",
+        "LivingRoom1",
+        "LivingRoom2",
+        "Park",
+        "Restaurant"
+    ],
+    "place_mapping": {
+        "NadasKitchen": "Kitchen1",
+        "MihasLivingRoom": "LivingRoom1",
+        "milenkosRoomBed": "DormRoom1",
+        "PiXmilenkosRoomTable": "DormRoom2",
+        "spelaMilenkosRoomTable": "DormRoom3",
+        "milenkoPark": "Park",
+        "LATERNA": "Restaurant",
+        "NadasLivingRoom": "LivingRoom2",
+        "milenkosRoomNearDevices": "DormRoom4",
+        "milenkosRoom": "DormRoom5",
+        "milenkosRoomTable": "DormRoom6",
+        "NadasBathroom": "Bathroom",
+        "spelaMilenkosKitchenTable": "Kitchen2",
+        "milenkosKitchenNotNearDevices": "Kitchen3"
+    },
+    "stages": 2,
+    "traffic": true,
+    "format": "raw",
+    "phone_mapping": {
+        "4aaf95a621ccf092": "Redmi Note 8 PRO",
+        "029a77f196804217": "Samsung Galaxy A51",
+        "03575768cc23b2df": "Google Pixel 6",
+        "e08d976ac75c011e": "Samsung Galaxy S6"
+    },
+
+    "created": "2023-01-11T14:31:20.625Z"
+}
