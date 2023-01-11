@@ -21,7 +21,7 @@ def remove_from_string(test_string):
     test_string = "".join(list(filter(lambda x: x.isalpha(), test_string)))
     return test_string
 
-place_mapping = {
+location_mapping = {
     "NadasKitchen": "Kitchen1",
     "MihasLivingRoom": "LivingRoom1",
     "milenkosRoomBed": "DormRoom1",
