@@ -84,9 +84,12 @@ def statistical_features_flat(df: pd.DataFrame, test_case_name: str, test_case_c
 
     d = dict() 
 
-    # add test_case_name and label
-    d['Name'] = test_case_name
-    d['Label'] = test_case_class
+    # add metadata
+    d['name'] = test_case_name
+    d['location'] = df['location'].iloc[0]
+    d['device_id'] = df['device_id'].iloc[0]
+    d['label'] = test_case_class
+    
 
     statistics = df[['X_UnCal', 'Y_UnCal', 'Z_UnCal', 'Intensity']].describe()
     for col_name in statistics.columns:
@@ -135,11 +138,14 @@ def spectral_image(df: pd.DataFrame, column = 'Intensity', duration = 60):
 
 
 
-def specter_to_data_row(name, label, df, vec_len, column = 'Intensity', duration = 60,): 
+def specter_to_data_row(name, label, df, vec_len, column = 'Intensity', duration = 60,):
+    location = df['location'].iloc[0]
+    device_id = df['device_id'].iloc[0]
     specter_intensity = spectral_image(df, column, duration)['fourier'].to_numpy()[:vec_len]
     padded = np.zeros((vec_len))
     padded[:specter_intensity.shape[0]] = specter_intensity
-    data_row = [name, label] + list(padded)
+    
+    data_row = [name, location, device_id, label] + list(padded)
     return data_row
 
 
@@ -147,14 +153,14 @@ def spectral_dataset(data: Dict[str, pd.DataFrame], label: int, vec_len: int = 5
     """
     Creates a pandas Dataframe with test cases in rows with first vec_len frequencies. It begins with name of text_case and label
     """
-    columns = ["Name", "Label"] + list(range(1,vec_len+1))
+    columns = ["name", "location", "device_id", "label"] + list(range(1,vec_len+1))
 
     return pd.DataFrame([specter_to_data_row(name, label=label, df=df, vec_len=vec_len, column=column, duration=experiment_duration) for name, df in data.items()], columns=columns)
 
 
 
 # joining, ordering datasets
-def join_and_order_dataset(dfs: List[pd.DataFrame], sort_by = ['Label', 'Name']):
+def join_and_order_dataset(dfs: List[pd.DataFrame], sort_by = ['label', 'name']):
     dataset = pd.concat(dfs, ignore_index=True)
     return dataset.sort_values(by=sort_by, ignore_index=True)
 
