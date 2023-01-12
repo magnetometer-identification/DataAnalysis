@@ -38,7 +38,13 @@ location_mapping = {
     "milenkosKitchenNotNearDevices": "Kitchen3"
 }
 
-
+device_mapping =  {
+        "4aaf95a621ccf092": "Redmi Note 8 PRO",
+        "029a77f196804217": "Samsung Galaxy A51",
+        "03575768cc23b2df": "Google Pixel 6",
+        "e08d976ac75c011e": "Samsung Galaxy S6"
+    }
+phone_mapping = device_mapping
 
 # Loading csv dataset
 
