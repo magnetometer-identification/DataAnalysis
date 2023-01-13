@@ -39,12 +39,14 @@ location_mapping = {
 }
 
 device_mapping =  {
-        "4aaf95a621ccf092": "Redmi Note 8 PRO",
-        "029a77f196804217": "Samsung Galaxy A51",
-        "03575768cc23b2df": "Google Pixel 6",
-        "e08d976ac75c011e": "Samsung Galaxy S6"
+        "4aaf95a621ccf092": "RedmiNote8PRO",
+        "029a77f196804217": "SamsungGalaxyA51",
+        "03575768cc23b2df": "GooglePixel6",
+        "e08d976ac75c011e": "SamsungGalaxyS6"
     }
-phone_mapping = device_mapping
+
+def reverse_device_mapping(device_names: list):
+    return [k for k,v in device_mapping.items() if v in device_names]
 
 # Loading csv dataset
 
@@ -63,6 +65,21 @@ def read_dataset(data_path, classes = 2):
         raise Exception("cannot process 6 classes")
 
 # feature generation
+
+def normalize(df: pd.DataFrame, columns = ['Intensity']) -> None:
+    """
+    normalize data in columns
+    """
+
+    df[columns] = (df[columns]-df[columns].mean())/df[columns].std()
+
+
+def normalize_dataset(data: Dict[str, pd.DataFrame], columns = ['Intensity']) -> None:
+    """
+    normalize entire dataset
+    """
+    for key in data.keys():
+        normalize(data[key], columns)
 
 def add_intensity(df: pd.DataFrame):
     """
