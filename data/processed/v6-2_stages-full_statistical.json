@@ -1,0 +1,50 @@
+{
+    "title": "v6 full statistical dataset",
+    "description": "Dataset with full statistical features and windowed test cases from V4,V5 and V6 data for 2 stages (all_on, 6, all_off, 5) on multiple locations",
+    "author": "Mihael",
+    "places": [
+        "Bathroom",
+        "DormRoom1",
+        "DormRoom2",
+        "DormRoom3",
+        "DormRoom4",
+        "DormRoom5",
+        "DormRoom6",
+        "DormRoom7",
+        "Kitchen1",
+        "Kitchen2",
+        "Kitchen3",
+        "LivingRoom1",
+        "LivingRoom2",
+        "Park",
+        "Restaurant"
+    ],
+    "place_mapping": {
+        "NadasKitchen": "Kitchen1",
+        "MihasLivingRoom": "LivingRoom1",
+        "milenkosRoomBed": "DormRoom1",
+        "PiXmilenkosRoomTable": "DormRoom2",
+        "spelaMilenkosRoomTable": "DormRoom3",
+        "milenkoPark": "Park",
+        "LATERNA": "Restaurant",
+        "NadasLivingRoom": "LivingRoom2",
+        "milenkosRoomNearDevices": "DormRoom4",
+        "milenkosRoom": "DormRoom5",
+        "milenkosRoomTable": "DormRoom6",
+        "NadasBathroom": "Bathroom",
+        "spelaMilenkosKitchenTable": "Kitchen2",
+        "milenkosKitchenNotNearDevices": "Kitchen3",
+        "PiXmilenkosRoomRotationsTable": "DormRoom7"
+    },
+    "stages": 2,
+    "traffic": true,
+    "format": "processed",
+    "phone_mapping": {
+        "4aaf95a621ccf092": "RedmiNote8PRO",
+        "029a77f196804217": "SamsungGalaxyA51",
+        "03575768cc23b2df": "GooglePixel6",
+        "e08d976ac75c011e": "SamsungGalaxyS6"
+    },
+    "created": 1673851070,
+    "version": "v6"
+}

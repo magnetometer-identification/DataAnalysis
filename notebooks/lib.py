@@ -62,8 +62,8 @@ def read_dataset(data_path, classes = 2):
     """
     if classes == 2:
         test_cases = [file.split("-")[2] for file in glob.glob(f"{data_path}/*stage_5*.csv")]
-        for i,test_case in enumerate(test_cases):
-            print(i,test_case)
+        # for i,test_case in enumerate(test_cases):
+        #     print(i,test_case)
         data_off = {test_case: pd.read_csv(glob.glob(f"{data_path}/*stage_5*{test_case}*")[0]) for test_case in test_cases}
         data_on = {test_case: pd.read_csv(glob.glob(f"{data_path}/*stage_6*{test_case}*")[0]) for test_case in test_cases}
         return data_on, data_off
@@ -89,10 +89,10 @@ def standardize_dataset(data: Dict[str, pd.DataFrame], columns = ['Intensity']) 
 
 def normalize(df: pd.DataFrame, columns = ['Intensity']) -> None:
     """
-    normalize data in columns
+    performes min-max normalization
     """
 
-    df[columns] = (df[columns]-df[columns].mean())/(df[columns].max() - df[columns].max())
+    df[columns] = (df[columns]-df[columns].min())/(df[columns].max() - df[columns].min())
 
 
 def normalize_dataset(data: Dict[str, pd.DataFrame], columns = ['Intensity']) -> None:
