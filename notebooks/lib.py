@@ -6,6 +6,7 @@ from typing import Dict, List
 from scipy.fft import fft, fftfreq
 import numpy as np
 from matplotlib import pyplot as plt
+from collections import defaultdict
 
 # loading raw data
 
@@ -35,9 +36,14 @@ location_mapping = {
     "milenkosRoomTable": "DormRoom6",
     "NadasBathroom": "Bathroom",
     "spelaMilenkosKitchenTable": "Kitchen2",
-    "milenkosKitchenNotNearDevices": "Kitchen3"
+    "milenkosKitchenNotNearDevices": "Kitchen3",
+    "PiXmilenkosRoomRotationsTable": "DormRoom7"
 }
 
+rotations_mapping = defaultdict(bool)
+with_rotations = ["DormRoom2", "DormRoom7", "Kitchen1", "LivingRoom2", "DormRoom5", "DormRoom3",  "Kitchen2"]
+for loc in with_rotations:
+    rotations_mapping[loc] = True
 device_mapping =  {
         "4aaf95a621ccf092": "RedmiNote8PRO",
         "029a77f196804217": "SamsungGalaxyA51",
@@ -66,12 +72,27 @@ def read_dataset(data_path, classes = 2):
 
 # feature generation
 
+def standardize(df: pd.DataFrame, columns = ['Intensity']) -> None:
+    """
+    standardize data in columns
+    """
+
+    df[columns] = (df[columns]-df[columns].mean())/df[columns].std()
+
+
+def standardize_dataset(data: Dict[str, pd.DataFrame], columns = ['Intensity']) -> None:
+    """
+    standardize entire dataset
+    """
+    for key in data.keys():
+        standardize(data[key], columns)
+
 def normalize(df: pd.DataFrame, columns = ['Intensity']) -> None:
     """
     normalize data in columns
     """
 
-    df[columns] = (df[columns]-df[columns].mean())/df[columns].std()
+    df[columns] = (df[columns]-df[columns].mean())/(df[columns].max() - df[columns].max())
 
 
 def normalize_dataset(data: Dict[str, pd.DataFrame], columns = ['Intensity']) -> None:
